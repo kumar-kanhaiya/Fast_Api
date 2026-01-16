@@ -25,6 +25,16 @@ def list_products(
         min_length=1,
         max_length=50,
         description="Search by product name (case insensitive)"
+    ),
+    sort_by_price : bool = Query(
+        False,
+        description="Sort products by price in ascending order"
+    ),
+    limit : int = Query(
+        default=0,
+        ge=1,
+        le=100,
+        description="Limit the number of products returned"
     )
 ):
     products = fetch_all_products()
@@ -41,6 +51,11 @@ def list_products(
                 status_code=404,
                 detail=f"No product found matching name={name}"
             )
+        
+        if sort_by_price:
+            products.sort(key=lambda x: x.get("price", 0))
+        if limit > 0:
+            products = products[:limit]
 
     return {
         "total": len(products),
