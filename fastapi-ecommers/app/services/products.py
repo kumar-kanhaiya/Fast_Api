@@ -14,3 +14,10 @@ def load_products() -> List[Dict]:
 
 def fetch_all_products() -> List[Dict]:
     return load_products()
+
+def fetch_product_by_id(product_id: int) -> Dict:
+    products = load_products()
+    for product in products:
+        if product.get("id") == product_id:
+            return product
+    raise ValueError(f"Product with id {product_id} not found")
