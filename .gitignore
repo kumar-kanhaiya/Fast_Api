@@ -1,0 +1,27 @@
+# ===== Node / React =====
+node_modules/
+dist/
+build/
+.vite/
+.env
+.env.local
+
+# ===== Python / FastAPI =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.env.*
+
+# ===== Logs =====
+*.log
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== IDE =====
+.vscode/
+.idea/
